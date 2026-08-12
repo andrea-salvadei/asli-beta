@@ -20,9 +20,19 @@ e può contenere difetti.
 - Android 8.0 o successivo, processore a 64 bit (arm64)
 - Spazio libero per il modello: circa 3 GB
 
+## Aggiornamenti e ritiri
+
+L'app **non controlla gli aggiornamenti da sola**: è parte della promessa di
+non fare rete. Questo ha un rovescio che va detto chiaro: se una versione
+viene ritirata per un difetto, **nessuno ti avvisa sul telefono**.
+
+Gli annunci — versioni nuove e ritiri — vivono qui: sulla pagina delle
+[release](../../releases) e in questa pagina. Per ricevere un'email quando
+esce o viene ritirata una versione, premi **Watch → Custom → Releases** in
+cima a questa pagina: è GitHub ad avvisarti, non l'app.
+
 ## Privacy
 
 Le conversazioni e le foto restano sul telefono, cifrate. La privacy policy
-completa sarà pubblicata su
-[questa pagina](https://andrea-salvadei.github.io/asli-beta/privacy/) insieme
-alla prima release stabile.
+completa è pubblicata su
+[questa pagina](https://andrea-salvadei.github.io/asli-beta/privacy/).
