@@ -4,8 +4,8 @@ title: Privacy policy di ASLI
 
 # Privacy policy di ASLI
 
-**In vigore dal:** 12 agosto 2026
-**Si riferisce a:** ASLI per Android, versione 1.0.2
+**In vigore dal:** 18 agosto 2026
+**Si riferisce a:** ASLI per Android, versione 1.1.0 e successive
 **Pubblicata da:** Andrea Salvadei
 
 ASLI è un'app di chat con un modello di intelligenza artificiale che gira
@@ -27,6 +27,26 @@ app non possono leggere.
 
 Il database è cifrato con SQLCipher e ogni foto è cifrata con AES-256-GCM. La
 chiave madre vive nel Keystore di Android e non lascia il telefono.
+
+## La chat in incognito
+
+*Disponibile dalla versione 1.1.0.*
+
+C'è anche un modo di fare una domanda che non resta, per quando il telefono
+può finire in mano a qualcun altro: il comando in alto a destra apre una chat
+in incognito.
+
+La chat in incognito non viene salvata da nessuna parte. Non compare
+nell'elenco delle conversazioni, le foto che le allegi non finiscono fra
+quelle dell'app, il riassunto non viene scritto. Non è cancellata dopo:
+non è mai scritta, e chiudendola sparisce — anche se l'app viene chiusa di
+colpo dal sistema.
+
+Due cose che quel comando non può prometterti, e preferiamo dirle. Una foto
+che scegli dalla galleria **resta nella galleria**, da dove l'hai presa:
+l'incognito riguarda la conversazione, non i file che avevi già. E la
+tastiera del telefono impara le parole che scrivi come fa sempre, perché è
+del sistema e nessuna app la può escludere per conto suo.
 
 ## Cosa esce dal telefono
 
