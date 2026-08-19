@@ -37,8 +37,8 @@ può finire in mano a qualcun altro: il comando in alto a destra apre una chat
 in incognito.
 
 La chat in incognito non viene salvata da nessuna parte. Non compare
-nell'elenco delle conversazioni, le foto che le allegi non finiscono fra
-quelle dell'app, il riassunto non viene scritto. Non è cancellata dopo:
+nell'elenco delle conversazioni e le foto che le allegi non finiscono fra
+quelle dell'app. Non è cancellata dopo:
 non è mai scritta, e chiudendola sparisce — anche se l'app viene chiusa di
 colpo dal sistema.
 
