@@ -213,7 +213,7 @@ che stai leggendo; le precedenti restano nella storia del repository.
 ## Come contattarci
 
 Per una segnalazione, un problema o una domanda su questa pagina:
-asli.app@gmail.com. È l'indirizzo che l'app stessa usa quando tocchi
+asli.supporto@gmail.com. È l'indirizzo che l'app stessa usa quando tocchi
 «Segnala la risposta» o «Scrivici».
 
 ## Cosa questa pagina non copre
