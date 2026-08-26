@@ -4,8 +4,8 @@ title: Privacy policy di ASLI
 
 # Privacy policy di ASLI
 
-**In vigore dal:** 18 agosto 2026
-**Si riferisce a:** ASLI per Android, versione 1.1.0 e successive
+**In vigore dal:** 25 agosto 2026
+**Si riferisce a:** ASLI per Android, versione 1.2.0 e successive
 **Pubblicata da:** Andrea Salvadei
 
 ASLI è un'app di chat con un modello di intelligenza artificiale che gira
@@ -37,7 +37,7 @@ può finire in mano a qualcun altro: il comando in alto a destra apre una chat
 in incognito.
 
 La chat in incognito non viene salvata da nessuna parte. Non compare
-nell'elenco delle conversazioni e le foto che le allegi non finiscono fra
+nell'elenco delle conversazioni e le foto che le alleghi non finiscono fra
 quelle dell'app. Non è cancellata dopo:
 non è mai scritta, e chiudendola sparisce — anche se l'app viene chiusa di
 colpo dal sistema.
@@ -88,7 +88,7 @@ sempre riscaricare. È una scelta dell'app, dichiarata anche nella sua pagina
 Quel trasferimento è un servizio che Google presta a te, dentro il tuo account:
 chi pubblica ASLI non vi accede e non ne riceve niente.
 
-La conseguenza da conoscere prima di averne bisogno: **La chiave che le cifra**
+La conseguenza da conoscere prima di averne bisogno. **La chiave che le cifra**
 non viaggia con il backup, perché resta nel Keystore di questo telefono. Un
 ripristino su un altro telefono, o dopo una disinstallazione,
 **non può rileggerle**, e l'app riparte da zero dichiarandolo.
