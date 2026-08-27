@@ -5,7 +5,7 @@ title: Privacy policy di ASLI
 # Privacy policy di ASLI
 
 **In vigore dal:** 25 agosto 2026
-**Si riferisce a:** ASLI per Android, versione 1.2.1 e successive
+**Si riferisce a:** ASLI per Android, versione 1.3.0 e successive
 **Pubblicata da:** Andrea Salvadei
 
 ASLI è un'app di chat con un modello di intelligenza artificiale che gira
