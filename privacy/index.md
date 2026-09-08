@@ -4,8 +4,9 @@ title: Privacy policy di ASLI
 
 # Privacy policy di ASLI
 
-**In vigore dal:** 25 agosto 2026
-**Si riferisce a:** ASLI per Android, versione 1.3.1 e successive
+**In vigore dal:** 8 settembre 2026
+**Revisione precedente:** 25 agosto 2026, per la versione 1.3.1
+**Si riferisce a:** ASLI per Android, versione 1.4.0 e successive
 **Pubblicata da:** Andrea Salvadei
 
 ASLI è un'app di chat con un modello di intelligenza artificiale che gira
@@ -24,6 +25,15 @@ parla la sezione «Se ci scrivi».
 Conversazioni, titoli, foto allegate, preferenze e il modello scaricato
 **restano su questo telefono**, nella cartella riservata all'app, che le altre
 app non possono leggere.
+
+Quella riserva vale per la cartella dell'app, non per tutto il telefono. Gli
+appunti di sistema sono una superficie che le app si dividono, e ogni comando
+«Copia» dell'app ci scrive: il rapporto diagnostico se sei tu a copiarlo, una
+risposta del modello con «Copia la risposta», il testo di una segnalazione con
+«Copia il testo». Ci scrive anche Work, quando gli chiedi di copiare un testo,
+ed è il solo caso in cui il testo ci arriva approvando un piano invece che
+premendo «Copia». Ne parlano «Le informazioni diagnostiche», «Se ci scrivi» e
+«ASLI Work».
 
 Il database è cifrato con SQLCipher e ogni foto è cifrata con AES-256-GCM. La
 chiave madre vive nel Keystore di Android e non lascia il telefono.
@@ -48,11 +58,90 @@ l'incognito riguarda la conversazione, non i file che avevi già. E la
 tastiera del telefono impara le parole che scrivi come fa sempre, perché è
 del sistema e nessuna app la può escludere per conto suo.
 
+## ASLI Work, il comando che agisce sul telefono
+
+*Disponibile dalla versione 1.4.0.*
+
+Work è la seconda destinazione dell'app: scrivi in italiano cosa vuoi far fare
+al telefono, e l'app te lo restituisce come un piano di passaggi. A leggere il
+comando è il modello installato, che gira qui come nella chat; e quello che il
+piano può cambiare decide se ti viene chiesto di approvarlo prima che parta.
+
+**Sei azioni, e non c'è una settima.** Work può accendere e spegnere la torcia,
+cambiare il volume multimediale, leggere lo stato del telefono, copiare un
+testo negli appunti di sistema, svuotare gli appunti, e consegnare un
+collegamento all'app che Android sceglie. L'elenco è chiuso nel codice: un
+nome che non è fra questi sei, o un argomento che l'app non prevede, non
+diventa un passaggio, e il telefono non viene toccato. Se dal comando non esce
+un piano che l'app sa eseguire, te lo dice e non fa niente. E il modello può
+rifiutare il comando: allora non nasce nessun piano, e niente cambia.
+
+**Il comando lo legge una sessione a sé.** Per preparare il piano l'app apre
+una sessione del modello nuova, la usa per quella richiesta e la chiude: quella
+sessione **non vede la conversazione della chat e non vede le foto**. Nel testo
+che le arriva ci sono tre cose e nient'altro: l'ora locale, il nome del fuso
+orario e il comando che hai scritto. Quanto pesa un'azione non lo decide il
+modello: il modello propone, e quali azioni possono partire da sole e quali no
+lo calcola il codice dal nome dell'azione.
+
+**Tre azioni partono senza chiedere niente**: leggere lo stato del telefono, la
+torcia e il volume. La prima è una lettura e non lascia niente; le altre due si
+rimettono come stavano, e la ricevuta ti offre di rimetterle. Gli appunti e il
+collegamento no: quelli chiedono che tu approvi il piano. E lo svuotamento
+degli appunti chiede due volte — l'approvazione, e poi una conferma sua appena
+prima di svuotare — perché è la sola azione di Work che non si può annullare:
+quello che avevi negli appunti non torna.
+
+**Lo stato del telefono** legge se è in carica, la memoria disponibile, lo
+spazio disponibile, se c'è una connessione e di che tipo — riconoscendo anche
+una VPN — la versione di Android e il modello del telefono; e il livello della
+batteria, quando il telefono lo riporta. Non c'è nessun identificatore che ti
+distingua: né il numero di serie, né l'identificatore che Android dà a
+un'installazione, né l'IMEI. Lo spazio è quello del volume su cui vive l'app,
+che su quasi tutti i telefoni è la memoria interna. Quei valori non li vedi
+sullo schermo, non vengono salvati e non tornano al modello: stanno in memoria
+per il tempo della ricevuta, e spariscono con lei.
+
+**Gli appunti sono di tutto il telefono, non dell'app**, e questa è la
+conseguenza da conoscere prima di dare quel comando. Un testo copiato negli
+appunti di sistema lo può leggere ogni altra app, resta lì anche se disinstalli
+ASLI, e «Elimina tutti i dati locali» non lo raggiunge, perché sta fuori dalla
+cartella dell'app. Work negli appunti scrive e li svuota, e non li legge mai:
+una lettura, nel codice, non esiste. Del testo da copiare la scheda del piano
+ti mostra la prima riga, tagliata se è lunga, mentre negli appunti finisce il
+testo intero: quella riga è un'anteprima, non tutto quello che stai approvando.
+
+**ASLI consegna il collegamento, non lo apre.** Compone una richiesta di
+apertura e la passa ad Android, che sceglie l'app a cui darla: può essere l'app
+che apre i collegamenti, l'app del sito, o una finestra che ti fa scegliere.
+ASLI non dichiara di saper aprire indirizzi web, quindi quella richiesta non
+può tornare a lei. L'indirizzo lo vedi **per intero** prima di approvare, e
+sono ammessi soltanto gli indirizzi `https`: un `http://` Work lo rifiuta
+invece di consegnarlo. Dopo la consegna ASLI non sa più niente, nemmeno se il
+collegamento è stato aperto, e di quello che fa il sito non risponde: ne parla
+«Cosa esce dal telefono».
+
+**Cosa Work non fa.** Non apre nessuna connessione propria. Non scrive niente
+su disco: nessun database, nessuna preferenza, nessun file — il comando e il
+piano vivono in memoria e spariscono. Non manda **nessuna** telemetria: nel
+rapporto diagnostico non c'è un solo campo di Work, e l'esportazione
+dell'archivio non ne porta niente. Non tocca foto, contatti, posizione,
+microfono, SMS o calendario. Non usa un servizio di accessibilità e non guida
+altre app al tuo posto.
+
+**I permessi.** Per la torcia l'app chiede il permesso della fotocamera, con la
+finestra di sistema, e **nessuna immagine viene acquisita**: accende la luce e
+nient'altro. Quel permesso non nasce con Work, serviva già alla foto scattata
+da dentro la chat. Di suo Work ha aggiunto un permesso solo: leggere lo stato
+della rete, che è quello che gli serve per dirti se una connessione c'è.
+
 ## Cosa esce dal telefono
 
-Tre cose, e nessuna riguarda quello che scrivi. Ce n'è una quarta che invece
-lo riguarda, e succede soltanto se sei tu a volerlo: la trovi in «Se ci
-scrivi».
+Quattro cose, e le prime tre non riguardano quello che scrivi. La quarta nasce
+da un comando che scrivi tu, e ha una forma diversa dalle altre tre: sta in
+fondo all'elenco, con la ragione per cui è diversa. Ce n'è poi una quinta, che
+riguarda quello che scrivi e succede soltanto se sei tu a volerlo: la trovi in
+«Se ci scrivi».
 
 **Il download del modello.** L'app apre una connessione a `huggingface.co`, alla
 revisione fissata nel codice, e soltanto quando sei tu a chiederlo. Hugging Face
@@ -72,11 +161,26 @@ di chi legge. Anche questo trattamento è di GitHub.
 **La copia di sistema di Android**, se l'hai lasciata accesa: ne parla la
 sezione qui sotto.
 
-Fuori da questi tre casi l'app non parla con nessuno. La chat funziona identica
-in **modalità aereo**, ed è misurato: durante una conversazione completa i
-contatori di rete del sistema per ASLI non si muovono di un byte. Il traffico
-non cifrato è vietato dalla configurazione dell'app, che si fida soltanto delle
-autorità di certificazione di sistema.
+**Il collegamento che approvi in Work.** ASLI non lo apre: compone la richiesta
+di apertura e la consegna, e Android sceglie l'app che la riceve. La connessione
+la apre quell'app, con le sue regole, e ASLI non sa nemmeno se il collegamento
+è stato aperto.
+
+Questa uscita non ha la forma delle altre tre, e la ragione va detta. Le altre
+tre nominano il destinatario e ti rimandano alla sua informativa, perché il
+destinatario è sempre lo stesso e lo conosciamo prima di te. Qui il destinatario
+nasce dal comando che scrivi tu: nel codice non c'è nessuna lista di indirizzi,
+quindi non c'è un nome da scriverti qui né un'informativa a cui rimandarti. Chi
+pubblica ASLI non risponde di quello che fa il sito che apri; l'indirizzo lo
+vedi per intero prima di approvare, e approvando sei tu a dirigere l'apertura.
+
+Fuori da questi quattro casi, e dalla posta che ci mandi tu, l'app non parla con
+nessuno. La chat funziona identica in **modalità aereo**, ed è misurato: durante
+una conversazione completa i contatori di rete del sistema per ASLI non si
+muovono di un byte. Il traffico non cifrato è vietato dalla configurazione
+dell'app, che si fida soltanto delle autorità di certificazione di sistema; e da
+Work non parte nessun collegamento `http://`, perché l'app lo rifiuta invece di
+consegnarlo.
 
 ## Il backup di Android, e una conseguenza da conoscere prima
 
@@ -105,8 +209,8 @@ cancellare l'originale non la toglie dalla conversazione.
 
 ## Le informazioni diagnostiche
 
-Le Impostazioni mostrano un rapporto con la versione dell'app, il sistema, lo
-stato di ogni modello del catalogo con la sua revisione, i conteggi di
+La schermata Profilo mostra un rapporto con la versione dell'app, il sistema,
+lo stato di ogni modello del catalogo con la sua revisione, i conteggi di
 conversazioni, messaggi e foto, lo spazio occupato dal modello, dalle immagini
 e dal database, lo spazio libero e il numero di versione dello schema del
 database. Esce da qui soltanto se sei tu a copiarlo,
@@ -138,6 +242,11 @@ intero prima che parta, e lo consegna alla tua app di posta: a premere invio
 **sei tu a spedirlo**, dalla tua casella. Se cambi idea davanti al messaggio
 già scritto, non parte niente.
 
+Lo stesso standard vale in Work per il collegamento, che vedi per intero prima
+di approvare. La seconda metà però è diversa, e va detta: la posta la spedisci
+tu premendo invio, mentre il collegamento lo consegna ASLI appena hai approvato
+il piano. In Work il tuo atto è l'approvazione, non un secondo tocco.
+
 **Parte solo quello che hai scelto.** Segnalando una risposta partono quella
 risposta, la nota che scrivi se la compili, la versione dell'app e il nome e
 la revisione del modello; la domanda che l'ha prodotta parte soltanto se
@@ -163,8 +272,10 @@ Tre livelli, tutti nelle tue mani.
 
 - **Una conversazione.** Eliminandola spariscono anche le foto dei suoi
   messaggi, nella stessa operazione.
-- **«Elimina tutti i dati locali»**, nelle Impostazioni: rimuove conversazioni,
+- **«Elimina tutti i dati locali»**, nel Profilo: rimuove conversazioni,
   messaggi, foto, preferenze e il modello scaricato. **Non è reversibile.**
+  Non arriva agli appunti di sistema, che sono del telefono e non dell'app: ne
+  parla «ASLI Work».
 - **Disinstallare l'app.** Android porta via i dati privati dell'app e con essi
   la chiave che li cifra. È definitivo: nemmeno un backup ripristinato dopo
   riesce a rileggere quello che c'era.
@@ -183,6 +294,13 @@ c'è nessuno a cui rivolgerli, perché i tuoi dati non sono mai usciti dalle tue
 mani: li eserciti da solo, e l'app ti dà gli attrezzi — l'esportazione
 dell'archivio ti consegna le conversazioni in un file, la cancellazione è
 descritta qui sopra.
+
+Su due cose quegli attrezzi non arrivano: quello che un comando di Work ha
+copiato negli appunti di sistema, che sono del telefono e non dell'app, e un
+collegamento che hai approvato e che un'altra app ha aperto. Gli appunti li
+svuoti tu, e Work ha un comando che lo fa; per quello che ha visto il sito che
+si è aperto, quei diritti si esercitano verso chi pubblica quel sito, non verso
+chi pubblica ASLI.
 
 Se ci scrivi, cambia: da quel momento abbiamo il tuo indirizzo e quello che
 ci hai mandato, e quei diritti li eserciti verso di noi, all'indirizzo qui
@@ -209,6 +327,11 @@ nell'avviso che si apre toccando la banda sopra la barra di invio.
 
 Ogni modifica passa da un commit e porta una data. Quella in vigore è la pagina
 che stai leggendo; le precedenti restano nella storia del repository.
+
+L'ultima è dell'8 settembre 2026: aggiunge «ASLI Work, il comando che agisce
+sul telefono», il quarto caso di «Cosa esce dal telefono», e gli appunti di
+sistema fra le superfici che l'app tocca. La revisione prima, del 25 agosto
+2026, descriveva la versione 1.3.1, dove Work non esisteva.
 
 ## Come contattarci
 
