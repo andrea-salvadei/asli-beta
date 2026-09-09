@@ -4,8 +4,8 @@ title: Privacy policy di ASLI
 
 # Privacy policy di ASLI
 
-**In vigore dal:** 8 settembre 2026
-**Revisione precedente:** 25 agosto 2026, per la versione 1.3.1
+**In vigore dal:** 9 settembre 2026
+**Revisione precedente:** 8 settembre 2026, per la versione 1.4.0 prima di Gmail e dei calendari
 **Si riferisce a:** ASLI per Android, versione 1.4.0 e successive
 **Pubblicata da:** Andrea Salvadei
 
@@ -14,7 +14,7 @@ interamente sul telefono. Questa pagina dice cosa succede ai tuoi dati, e
 comincia dal fatto che conta più di tutti gli altri:
 
 **chi pubblica ASLI non riceve alcun dato dai suoi utenti, tranne quello che
-sei tu a mandargli scrivendo.** Non esistono account, non c'è un server
+sei tu a mandargli scrivendo.** Non esistono account ASLI, non c'è un server
 dell'app, non viene spedita nessuna telemetria, non c'è raccolta automatica
 delle segnalazioni di errore, non viene creato nessun identificatore
 dell'installazione. L'unica cosa che ci arriva è la posta che ci mandi tu, e ne
@@ -67,11 +67,13 @@ al telefono, e l'app te lo restituisce come un piano di passaggi. A leggere il
 comando è il modello installato, che gira qui come nella chat; e quello che il
 piano può cambiare decide se ti viene chiesto di approvarlo prima che parta.
 
-**Sei azioni, e non c'è una settima.** Work può accendere e spegnere la torcia,
+**Le azioni disponibili.** Work può accendere e spegnere la torcia,
 cambiare il volume multimediale, leggere lo stato del telefono, copiare un
 testo negli appunti di sistema, svuotare gli appunti, e consegnare un
-collegamento all'app che Android sceglie. L'elenco è chiuso nel codice: un
-nome che non è fra questi sei, o un argomento che l'app non prevede, non
+collegamento all'app che Android sceglie. Può anche inviare email con Gmail,
+e creare eventi nei calendari del telefono, nei percorsi descritti qui sotto.
+L'elenco è chiuso nel codice: un
+nome che non è fra quelli previsti, o un argomento che l'app non prevede, non
 diventa un passaggio, e il telefono non viene toccato. Se dal comando non esce
 un piano che l'app sa eseguire, te lo dice e non fa niente. E il modello può
 rifiutare il comando: allora non nasce nessun piano, e niente cambia.
@@ -89,7 +91,7 @@ torcia e il volume. La prima è una lettura e non lascia niente; le altre due si
 rimettono come stavano, e la ricevuta ti offre di rimetterle. Gli appunti e il
 collegamento no: quelli chiedono che tu approvi il piano. E lo svuotamento
 degli appunti chiede due volte — l'approvazione, e poi una conferma sua appena
-prima di svuotare — perché è la sola azione di Work che non si può annullare:
+prima di svuotare — perché non si può annullare:
 quello che avevi negli appunti non torna.
 
 **Lo stato del telefono** legge se è in carica, la memoria disponibile, lo
@@ -121,27 +123,54 @@ invece di consegnarlo. Dopo la consegna ASLI non sa più niente, nemmeno se il
 collegamento è stato aperto, e di quello che fa il sito non risponde: ne parla
 «Cosa esce dal telefono».
 
-**Cosa Work non fa.** Non apre nessuna connessione propria. Non scrive niente
-su disco: nessun database, nessuna preferenza, nessun file — il comando e il
-piano vivono in memoria e spariscono. Non manda **nessuna** telemetria: nel
+**Le email Gmail.** Colleghi un account con la schermata di autorizzazione
+Google. ASLI richiede il permesso di inviare email e di conoscere l'indirizzo
+del mittente, non di leggere la casella o i contatti. La bozza è preparata dal
+modello locale. Puoi modificare destinatario, oggetto e testo completo prima
+di premere «Conferma e invia». Solo allora ASLI invia il messaggio a Gmail via
+HTTPS. Il messaggio raggiunge Google e il destinatario scelto: non il server
+di chi pubblica ASLI, che non esiste. Non sono previsti allegati, CC o CCN.
+L'invio non si annulla da ASLI. Un esito incerto richiede di controllare Gmail
+prima di inviare ancora: l'app non riprova automaticamente.
+
+La bozza e l'account collegato vivono nella memoria della sessione ASLI.
+I token di autorizzazione restano nel componente Android e nelle cache gestite
+da Google; non entrano nel modello, nel rapporto diagnostico o nell'archivio.
+«Scollega Gmail» revoca l'accesso presso Google; se non riesce, lo segnala.
+Puoi anche revocarlo dalla gestione delle connessioni del tuo account Google.
+Scollegare o cancellare i dati ASLI non elimina le email già inviate.
+
+**I calendari del telefono.** Work prepara un evento con titolo, inizio, fine,
+luogo e descrizione modificabili. Quando chiedi l'elenco dei calendari, Android
+richiede i permessi di lettura e scrittura del calendario. ASLI legge nomi e
+account dei calendari scrivibili, non l'agenda. Scegli tu il calendario e
+confermi i campi e il fuso mostrati prima del salvataggio. ASLI rilegge soltanto
+l'evento appena inserito per verificarlo. Non aggiunge invitati o promemoria.
+Un esito incerto richiede di controllare il calendario; non viene ritentato.
+L'evento resta fuori dall'archivio ASLI: cancellare i dati dell'app non lo
+elimina e per modificarlo o cancellarlo usi il calendario del telefono.
+Il servizio dell'account scelto può sincronizzarlo secondo le sue impostazioni
+e la propria informativa. ASLI non avvia una sincronizzazione e non ne verifica
+l'esito: «salvato» indica la presenza nel calendario sul telefono.
+
+**Cosa Work non fa.** Non salva il comando o il piano
+su disco: vivono in memoria e spariscono. Non manda **nessuna** telemetria: nel
 rapporto diagnostico non c'è un solo campo di Work, e l'esportazione
 dell'archivio non ne porta niente. Non tocca foto, contatti, posizione,
-microfono, SMS o calendario. Non usa un servizio di accessibilità e non guida
+microfono o SMS. Non usa un servizio di accessibilità e non guida
 altre app al tuo posto.
 
 **I permessi.** Per la torcia l'app chiede il permesso della fotocamera, con la
 finestra di sistema, e **nessuna immagine viene acquisita**: accende la luce e
 nient'altro. Quel permesso non nasce con Work, serviva già alla foto scattata
-da dentro la chat. Di suo Work ha aggiunto un permesso solo: leggere lo stato
-della rete, che è quello che gli serve per dirti se una connessione c'è.
+da dentro la chat. Work legge lo stato della rete per dirti se una connessione
+c'è. I permessi calendario si chiedono soltanto quando carichi i calendari;
+puoi revocarli dalle impostazioni Android dell'app.
 
 ## Cosa esce dal telefono
 
-Quattro cose, e le prime tre non riguardano quello che scrivi. La quarta nasce
-da un comando che scrivi tu, e ha una forma diversa dalle altre tre: sta in
-fondo all'elenco, con la ragione per cui è diversa. Ce n'è poi una quinta, che
-riguarda quello che scrivi e succede soltanto se sei tu a volerlo: la trovi in
-«Se ci scrivi».
+Le connessioni e le consegne descritte sotto dipendono dalle funzioni che
+scegli di usare. La posta inviata al supporto è descritta in «Se ci scrivi».
 
 **Il download del modello.** L'app apre una connessione a `huggingface.co`, alla
 revisione fissata nel codice, e soltanto quando sei tu a chiederlo. Hugging Face
@@ -174,10 +203,17 @@ quindi non c'è un nome da scriverti qui né un'informativa a cui rimandarti. Ch
 pubblica ASLI non risponde di quello che fa il sito che apri; l'indirizzo lo
 vedi per intero prima di approvare, e approvando sei tu a dirigere l'apertura.
 
-Fuori da questi quattro casi, e dalla posta che ci mandi tu, l'app non parla con
-nessuno. La chat funziona identica in **modalità aereo**, ed è misurato: durante
-una conversazione completa i contatori di rete del sistema per ASLI non si
-muovono di un byte. Il traffico non cifrato è vietato dalla configurazione
+**Il collegamento e gli invii Gmail.** Quando colleghi l'account ASLI comunica
+con Google per l'autorizzazione e la verifica del mittente; quando confermi un
+invio, invia a `gmail.googleapis.com` destinatario, oggetto e testo. Google
+tratta questi dati secondo la propria [informativa](https://policies.google.com/privacy).
+Il collegamento è facoltativo. ASLI non usa i dati Google per pubblicità o
+addestramento di modelli: il contenuto della casella non viene letto.
+
+Fuori da questi casi, e dalla posta che ci mandi tu, l'app non parla con
+nessuno. La chat funziona in **modalità aereo**; collegare Gmail e inviare email
+richiede invece una connessione.
+Il traffico non cifrato è vietato dalla configurazione
 dell'app, che si fida soltanto delle autorità di certificazione di sistema; e da
 Work non parte nessun collegamento `http://`, perché l'app lo rifiuta invece di
 consegnarlo.
@@ -328,8 +364,10 @@ nell'avviso che si apre toccando la banda sopra la barra di invio.
 Ogni modifica passa da un commit e porta una data. Quella in vigore è la pagina
 che stai leggendo; le precedenti restano nella storia del repository.
 
-L'ultima è dell'8 settembre 2026: aggiunge «ASLI Work, il comando che agisce
-sul telefono», il quarto caso di «Cosa esce dal telefono», e gli appunti di
+L'ultima è del 9 settembre 2026: aggiunge a Work le email inviate con Gmail
+dopo la tua conferma e gli eventi scritti nei calendari del telefono. Quella
+dell'8 settembre 2026 aveva aggiunto «ASLI Work, il comando che agisce sul
+telefono», il quarto caso di «Cosa esce dal telefono», e gli appunti di
 sistema fra le superfici che l'app tocca. La revisione prima, del 25 agosto
 2026, descriveva la versione 1.3.1, dove Work non esisteva.
 
